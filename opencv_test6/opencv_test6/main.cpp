@@ -142,6 +142,23 @@ int main(int argc, const char * argv[])
     
     // when you type the "q", the program quit
     while (char(waitKey(1)) != 'q') {}
+    
+    // ====================================================================================
+    // e.g the Gaussian Blur without TrackBar
+    Mat image = imread(PATH+string("1.jpg"),1);
+    if(!image.data){printf("Error! we can't read the image 1.jpg"); return false;}
+    
+    namedWindow("the original image");
+    namedWindow("the output image after gaussian blur");
+    
+    imshow("the original image", image);
+    
+    Mat output;
+    GaussianBlur(image, output, Size(9,9), 0, 0);
+    imshow("the output image after gaussian blur", output);
+    
+    waitKey(0);
+    
 
     
     return 0;
